@@ -47,6 +47,8 @@ def main():
         pygame.display.flip()
         delta_time = clock.tick(60) / 1000
         updatable.update(delta_time)
+
+        # collision detection
         for random_asteroid in asteroids:
             if random_asteroid.collides_with(player):
                 log_event("player_hit")
@@ -55,7 +57,7 @@ def main():
             for shot in shots:
                 if random_asteroid.collides_with(shot):
                     log_event("asteroid_shot")
-                    random_asteroid.kill()
+                    random_asteroid.split()
                     shot.kill()
             
         
